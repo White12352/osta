@@ -104,7 +104,7 @@ public class LiveConfig {
             if (TextUtils.isEmpty(url)) {
                 url = "https://tv.lan2wan.top/candymuj1.json";
               // 添加以下代码，解决内置源时，投屏播放问题，给定一个配置，写入本地数据库，标记一个name（名字“源已内置”可以随便取，但一定要有，type为1,表示直播）
-                Config.find(url, 1).name("源已内置").update();
+                Config.find(url, 1).name("⚠️更新直播点这个喔").update();
             }
             parseConfig(Decoder.getJson(config.getUrl()), callback);
         } catch (Throwable e) {
