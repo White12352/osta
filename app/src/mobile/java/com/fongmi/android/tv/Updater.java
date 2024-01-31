@@ -70,31 +70,31 @@ public class Updater implements Download.Callback {
     }
 
     public void start() {
-        App.execute(this::doInBackground);
+        //App.execute(this::doInBackground);
     }
 
     private boolean need(int code, String name) {
-        return Setting.getUpdate() && (dev ? !name.equals(BuildConfig.VERSION_NAME) && code >= BuildConfig.VERSION_CODE : code > BuildConfig.VERSION_CODE);
+        //return Setting.getUpdate() && (dev ? !name.equals(BuildConfig.VERSION_NAME) && code >= BuildConfig.VERSION_CODE : code > BuildConfig.VERSION_CODE);
     }
 
     private void doInBackground() {
-        try {
-            JSONObject object = new JSONObject(OkHttp.string(getJson()));
-            String name = object.optString("name");
-            String desc = object.optString("desc");
-            int code = object.optInt("code");
-            if (need(code, name)) App.post(() -> show(App.activity(), name, desc));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        //try {
+            //JSONObject object = new JSONObject(OkHttp.string(getJson()));
+            //String name = object.optString("name");
+            //String desc = object.optString("desc");
+            //int code = object.optInt("code");
+            //if (need(code, name)) App.post(() -> show(App.activity(), name, desc));
+        //} catch (Exception e) {
+            //e.printStackTrace();
+        //}
     }
 
     private void show(Activity activity, String version, String desc) {
-        binding = DialogUpdateBinding.inflate(LayoutInflater.from(activity));
-        check().create(activity, ResUtil.getString(R.string.update_version, version)).show();
-        dialog.getButton(DialogInterface.BUTTON_POSITIVE).setOnClickListener(this::confirm);
-        dialog.getButton(DialogInterface.BUTTON_NEGATIVE).setOnClickListener(this::cancel);
-        binding.desc.setText(desc);
+        //binding = DialogUpdateBinding.inflate(LayoutInflater.from(activity));
+        //check().create(activity, ResUtil.getString(R.string.update_version, version)).show();
+        //dialog.getButton(DialogInterface.BUTTON_POSITIVE).setOnClickListener(this::confirm);
+        //dialog.getButton(DialogInterface.BUTTON_NEGATIVE).setOnClickListener(this::cancel);
+        //binding.desc.setText(desc);
     }
 
     private AlertDialog create(Activity activity, String title) {
