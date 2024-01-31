@@ -75,6 +75,7 @@ public class Updater implements Download.Callback {
 
     private boolean need(int code, String name) {
         //return Setting.getUpdate() && (dev ? !name.equals(BuildConfig.VERSION_NAME) && code >= BuildConfig.VERSION_CODE : code > BuildConfig.VERSION_CODE);
+        return this;
     }
 
     private void doInBackground() {
