@@ -142,7 +142,13 @@ public class ConfigDialog implements DialogInterface.OnDismissListener {
     private void onPositive(View view) {
         String text = binding.text.getText().toString().trim();
         if (edit) Config.find(url, type).url(text).update();
-        if (text.isEmpty()) Config.delete(url, type);
+        //if (text.isEmpty()) Config.delete(url, type);
+        if (text.isEmpty()) {
+          // 未填写时，点了确定，改成内置源
+            url = "https://gitee.com/kevinr/tvbox/raw/master/spider/test.json";
+            Config.find(url, 1).url("https://gitee.com/kevinr/tvbox/raw/master/spider/test.json").update();
+            //Config.delete(ori, type);
+        }
         callback.setConfig(Config.find(text, type));
         dialog.dismiss();
     }
