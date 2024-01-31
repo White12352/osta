@@ -124,7 +124,13 @@ public class ConfigDialog {
         String url = binding.url.getText().toString().trim();
         String name = binding.name.getText().toString().trim();
         if (edit) Config.find(ori, type).url(url).name(name).update();
-        if (url.isEmpty()) Config.delete(ori, type);
+        //if (url.isEmpty()) Config.delete(ori, type);
+        if (url.isEmpty()) {
+          // 未填写时，点了确定，改成内置源
+            url = "https://gitee.com/kevinr/tvbox/raw/master/spider/test.json";
+            Config.find(url, 1).name("源已内置").update();
+            //Config.delete(ori, type);
+        }
         callback.setConfig(Config.find(url, type));
         dialog.dismiss();
     }
